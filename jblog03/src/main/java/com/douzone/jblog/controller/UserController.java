@@ -9,6 +9,7 @@ import com.douzone.jblog.service.UserService;
 import com.douzone.jblog.vo.UserVo;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
@@ -34,7 +35,7 @@ public class UserController {
 	}
 	
 	//로그아웃
-	@RequestMapping("logout")
+	@RequestMapping("/logout")
 	public String logout() {
 		return "";
 	}

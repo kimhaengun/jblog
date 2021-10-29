@@ -7,8 +7,8 @@
 <h1 class="logo"
 	style="background:url(${pageContext.request.contextPath}/assets/images/logo.jpg) 0 0 no-repeat">JBlog</h1>
 <ul class="menu">
-	<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
-	<li><a href="${pageContext.request.contextPath}/join">회원가입</a></li>
-	<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+	<li><a href="${pageContext.request.contextPath}/user/login">로그인</a></li>
+	<li><a href="${pageContext.request.contextPath}/user/join">회원가입</a></li>
+	<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
 	<li><a href="${pageContext.request.contextPath}/admin">내블로그</a></li>
 </ul>
