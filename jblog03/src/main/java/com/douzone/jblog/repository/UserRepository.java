@@ -17,6 +17,12 @@ public class UserRepository {
 		int result = sqlSession.insert("user.insert",uservo);
 		return result == 1;
 	}
+
+	public UserVo login(UserVo userVo) {
+		// TODO Auto-generated method stub
+		UserVo vo = sqlSession.selectOne("user.select",userVo);
+		return vo;
+	}
 	
 	
 }

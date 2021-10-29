@@ -15,5 +15,10 @@ public class UserService {
 	public void join(UserVo uservo) {
 		userRepository.join(uservo);
 	}
+	
+	public UserVo login(UserVo userVo) {
+		// TODO Auto-generated method stub
+		return userRepository.login(userVo);
+	}
 
 }

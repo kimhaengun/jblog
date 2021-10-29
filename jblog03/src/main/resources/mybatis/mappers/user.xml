@@ -8,4 +8,9 @@
 			insert into user values(#{id},#{name},#{password},now());
 		]]>
 	</insert>
+	<select id="select" parameterType="userVo" resultType="uservo">
+		<![CDATA[
+			select id,name,join_date as regDate from user where id=#{id} and password = #{password};			
+		]]>
+	</select>
 </mapper>
