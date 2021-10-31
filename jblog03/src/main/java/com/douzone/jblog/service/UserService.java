@@ -16,8 +16,16 @@ public class UserService {
 		userRepository.join(uservo);
 	}
 	
-	public UserVo login(UserVo userVo) {
+//	public UserVo login(UserVo userVo) {
+//		// TODO Auto-generated method stub
+//		return userRepository.login(userVo);
+//	}
+
+	public UserVo login(String id, String password) {
 		// TODO Auto-generated method stub
+		UserVo userVo = new UserVo();
+		userVo.setId(id);
+		userVo.setPassword(password);
 		return userRepository.login(userVo);
 	}
 

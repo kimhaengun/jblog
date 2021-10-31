@@ -21,12 +21,6 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
-	@RequestMapping(value = "/login",method = RequestMethod.POST)
-	public String login(UserVo userVo,Model model) {
-		UserVo vo = userService.login(userVo);
-		model.addAttribute("uservo", vo);
-		return "redirect:/";
-	}
 	
 	
 	//회원가입 페이지
