@@ -29,4 +29,9 @@ public class UserService {
 		return userRepository.login(userVo);
 	}
 
+	public UserVo IdCheck(String id) {
+		// TODO Auto-generated method stub
+		return userRepository.IdCheck(id);
+	}
+
 }

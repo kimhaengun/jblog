@@ -23,6 +23,12 @@ public class UserRepository {
 		UserVo vo = sqlSession.selectOne("user.select",userVo);
 		return vo;
 	}
+
+	public UserVo IdCheck(String id) {
+		// TODO Auto-generated method stub
+		UserVo vo = sqlSession.selectOne("user.idcheck",id);
+		return vo;
+	}
 	
 	
 }
