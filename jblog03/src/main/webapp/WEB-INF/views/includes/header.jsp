@@ -3,9 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<div onclick="location.href='${pageContext.request.contextPath}'" style="cursor:pointer;">
 <h1 class="logo"
 	style="background:url(${pageContext.request.contextPath}/assets/images/logo.jpg) 0 0 no-repeat">JBlog</h1>
+</div>
 <ul class="menu">
 	<c:choose>
 		<c:when test="${empty authUser }">

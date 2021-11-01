@@ -1,8 +1,17 @@
 package com.douzone.jblog.controller;
 
+
+
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,14 +34,20 @@ public class UserController {
 	
 	//회원가입 페이지
 	@RequestMapping("/join")
-	public String join() {
+	public String join(@ModelAttribute UserVo vo) {
 		return "user/join";
 	}
 	
 	@RequestMapping(value = "/join",method = RequestMethod.POST)
-	public String join(UserVo uservo) {
-		System.out.println( "========="+uservo);
-			userService.join(uservo);
+	public String join(@ModelAttribute @Valid UserVo userVo,BindingResult result,Model model) {
+		System.out.println( "========="+userVo);
+		if(result.hasErrors()) {
+			//에러 있을 경우 사용자에게 기존 값을 제공해야함
+			model.addAllAttributes(result.getModel());
+			
+			return "user/join";
+		}
+			userService.join(userVo);
 		return "user/joinsuccess";
 	}
 	

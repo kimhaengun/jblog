@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!doctype html>
 <html>
@@ -13,7 +15,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#btn-checkid").click(function(){
-		var id = $("#blog-id").val();
+		var id = $("#id").val();
 		if(id == ''){
 			var empty = 'id값을 넣어주세요';
 			$('input[name=id]').attr('value',empty);
@@ -56,18 +58,34 @@ $(function(){
 <body>
 	<div class="center-content">
 		<c:import url="/WEB-INF/views/includes/header.jsp"/>
-		<form class="join-form" id="join-form" method="post" action="${pageContext.request.contextPath}/user/join">
+		<form:form modelAttribute="userVo" class="join-form" id="join-form" method="post" action="${pageContext.request.contextPath}/user/join">
 			<label class="block-label" for="name">이름</label>
-			<input id="name"name="name" type="text" value="" placeholder="이름을 입력해 주세요">
+			<form:input path="name" />
+				
+			<p style="text-align: left; padding-left: 0; color: red">
+				<spring:hasBindErrors name="userVo">
+						<c:if test="${errors.hasFieldErrors('name') }">
+							<spring:message code="${errors.getFieldError('name').codes[0] }"/>
+						</c:if>
+					</spring:hasBindErrors>
+			</p>
 			
 			<label class="block-label" for="blog-id">아이디</label>
-			<input id="blog-id" name="id" type="text" placeholder="ID를 입력해 주세요" > 
+			<form:input path="id" /> 
 			<input id="btn-checkid" type="button" value="id 중복체크">
 			<img id="img-checkid" style="display: none;" src="${pageContext.request.contextPath}/assets/images/check.png">
-
+		
+			<p style="text-align: left; padding-left: 0; color: red">
+				<form:errors path="id"/>
+			</p>
+			
 			<label class="block-label" for="password">패스워드</label>
-			<input id="password" name="password" type="password" placeholder="패스워드를 입력해 주세요" />
-
+			<form:input path="password" />
+			
+			<p style="text-align: left; padding-left: 0; color: red">
+				<form:errors path="password"/>
+			</p>
+			
 			<fieldset>
 				<legend>약관동의</legend>
 				<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
@@ -76,7 +94,7 @@ $(function(){
 
 			<input type="submit" value="가입하기">
 
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>
