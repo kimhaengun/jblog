@@ -52,6 +52,17 @@ $(function(){
 			}			
 		});
 	});
+	
+/* 	$("#join").click(function(){
+		
+		if($('#agree-prov').is("checked")==false){
+			alert("약관체크 해주세요");
+			return false;
+		}
+		if($('#agree-prov').is("checked")==true){
+			return ;
+		}
+	}); */
 });
 </script>
 </head>
@@ -88,11 +99,11 @@ $(function(){
 			
 			<fieldset>
 				<legend>약관동의</legend>
-				<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
+				<input id="agree-prov" type="checkbox" name="agreeProv" value="y"  />
 				<label class="l-float">서비스 약관에 동의합니다.</label>
 			</fieldset>
 
-			<input type="submit" value="가입하기">
+			<input id="join" type="submit" value="가입하기">
 
 		</form:form>
 	</div>

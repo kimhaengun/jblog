@@ -21,7 +21,7 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		// TODO Auto-generated method stub
 		AuthUser authUser = parameter.getParameterAnnotation(AuthUser.class);
 		
-		//@Auth 어노테이션이 붙어있지 않음.
+		//@Authuser 어노테이션이 붙어있지 않음.
 		if(authUser == null) {
 			return false;
 		}
