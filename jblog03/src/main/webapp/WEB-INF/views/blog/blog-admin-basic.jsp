@@ -18,7 +18,8 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<c:import url="/WEB-INF/views/includes/adminheader.jsp"/>
-				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/update" method="post">
+				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/update" method="post"
+				enctype="multipart/form-data">
 				<input type="hidden" name="id" value="${authUser.id }"/>
 				<h1>유저 : ${authUser.id }</h1>
 	 		      	<table class="admin-config">
