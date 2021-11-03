@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.douzone.jblog.service.BlogService;
+import com.douzone.jblog.service.CategoryService;
 import com.douzone.jblog.service.UserService;
+import com.douzone.jblog.vo.BlogVo;
 import com.douzone.jblog.vo.UserVo;
 
 @Controller
@@ -23,6 +26,11 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BlogService blogService;
+	@Autowired
+	private CategoryService categoryService;
+	
 	
 	//로그인 페이지
 	@RequestMapping("/login")
@@ -46,7 +54,17 @@ public class UserController {
 			
 			return "user/join";
 		}
+			//회원가입
 			userService.join(userVo);
+			
+			//초기 블로그 생성
+			String userId = userVo.getId();
+			System.out.println("블로그 userId 확인 : "+userId);
+			blogService.insert(userId);
+			
+			//초기 카테고리(미분류) 생성
+			categoryService.insert(userId);
+			
 		return "user/joinsuccess";
 	}
 	

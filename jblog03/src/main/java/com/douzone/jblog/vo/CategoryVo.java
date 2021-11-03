@@ -2,9 +2,9 @@ package com.douzone.jblog.vo;
 
 public class CategoryVo {
 	private Long no;
-	private String name;
-	private String desc;
-	private String blogId;
+	private String name; //카테고리 명
+	private String desc; //카테고리 설명
+	private String blogId; //userID = blogId
 	
 	@Override
 	public String toString() {

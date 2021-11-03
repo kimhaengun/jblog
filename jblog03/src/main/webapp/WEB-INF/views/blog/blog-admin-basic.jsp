@@ -18,7 +18,9 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<c:import url="/WEB-INF/views/includes/adminheader.jsp"/>
-				<form action="" method="post">
+				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/update" method="post">
+				<input type="hidden" name="id" value="${authUser.id }"/>
+				<h1>유저 : ${authUser.id }</h1>
 	 		      	<table class="admin-config">
 			      		<tr>
 			      			<td class="t">블로그 제목</td>

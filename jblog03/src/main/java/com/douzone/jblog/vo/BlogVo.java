@@ -2,9 +2,9 @@ package com.douzone.jblog.vo;
 
 public class BlogVo {
 
-	private String id;
-	private String title;
-	private String logo;
+	private String id; //userId
+	private String title; // title
+	private String logo; //이미지
 	
 	
 	@Override
