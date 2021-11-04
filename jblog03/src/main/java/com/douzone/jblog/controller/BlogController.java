@@ -47,11 +47,7 @@ public class BlogController {
 		return "redirect:/"+blogVo.getId()+"/admin";
 	}
 	
-	//카테고리 form
-	@RequestMapping("/admin/category")
-	public String category(@AuthUser UserVo userVo) {
-		return "blog/blog-admin-category";
-	}
+
 	//글작성 form
 	@RequestMapping("/admin/write")
 	public String write(@AuthUser UserVo userVo) {

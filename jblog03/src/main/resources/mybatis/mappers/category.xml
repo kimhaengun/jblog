@@ -7,5 +7,16 @@
 			insert into category values(null,#{name},#{desc},#{blogId});
 		]]>
 	</insert>
-
+	
+	<insert id="categoryadd" parameterType="categoryVo">
+		<![CDATA[
+			insert into category values(null,#{name},#{desc},#{blogId});
+		]]>
+	</insert>
+	
+	<select id="findbycategory" parameterType="String" resultType="categoryrespdto">
+		<![CDATA[
+		select c.name, count.count as count, c.desc as `desc`, c.blog_id as blogId from category as c join (select count(*)as count from post group by category_no) as count on c.blog_id = #{blogId} group by c.name order by c.no desc ;		
+		]]>
+	</select>
 </mapper>

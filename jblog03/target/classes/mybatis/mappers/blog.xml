@@ -10,7 +10,7 @@
 	</insert>
 	<update id="update" parameterType="blogVo">
 		<![CDATA[
-			update blog set id = #{id}, title = #{title}, logo = #{logo}
+			update blog set title = #{title}, logo = #{logo} where id = #{id};
 		]]>
 	</update>
 	<select id="findbyblog" parameterType="String" resultType="blogvo">

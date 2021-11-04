@@ -26,6 +26,15 @@
 		      			<th>설명</th>
 		      			<th>삭제</th>      			
 		      		</tr>
+		      		<c:forEach items="${list}" var="list">
+		      		<tr>
+		      			<th>1</th>
+		      			<th>${list.name }</th>
+		      			<th>${list.count }</th>
+		      			<th>${list.desc }</th>
+		      			<th>삭제</th>
+		      		</tr> 		      			
+		      		</c:forEach>
 					<tr>
 						<td>3</td>
 						<td>미분류</td>
@@ -50,6 +59,10 @@
 				</table>
       	
       			<h4 class="n-c">새로운 카테고리 추가</h4>
+
+      			<form action="${pageContext.request.contextPath}/${authUser.id}/admin/category" method="post">
+		      	<input type="text" name="blogId" value="${authUser.id }"/>
+		  
 		      	<table id="admin-cat-add">
 		      		<tr>
 		      			<td class="t">카테고리명</td>
@@ -64,6 +77,7 @@
 		      			<td><input type="submit" value="카테고리 추가"></td>
 		      		</tr>      		      		
 		      	</table> 
+		      	</form>
 			</div>
 		</div>
 		<div id="footer">
