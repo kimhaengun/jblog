@@ -51,10 +51,11 @@ public class BlogService {
 			os.write(data);
 			os.close();
 
-			BlogVo vo = new BlogVo();
-			vo.setLogo(URL_BASE + "/" + saveFilename);
-
-			blogRepository.blogAdminBasicUpdate(vo);
+//			BlogVo vo = new BlogVo();
+//			vo.setLogo(URL_BASE + "/" + saveFilename);
+//			System.out.println("=====설마 초기화됨?"+vo); //응 초기화됨
+			blogVo.setLogo(URL_BASE + "/" + saveFilename);
+			blogRepository.blogAdminBasicUpdate(blogVo);
 		} catch(IOException ex) {
 			throw new RuntimeException("file upload error:" + ex);
 		}
@@ -74,6 +75,11 @@ public class BlogService {
 		filename += ("." + extName);
 
 		return filename;
+	}
+	//
+	public BlogVo findByBlog(String blogId) {
+		// TODO Auto-generated method stub
+		return blogRepository.findByBlog(blogId);
 	}
 
 

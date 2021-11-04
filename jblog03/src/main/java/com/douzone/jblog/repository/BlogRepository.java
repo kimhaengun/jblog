@@ -24,6 +24,10 @@ public class BlogRepository {
 		int result = sqlSession.update("blog.update",blogVo);
 		return result == 1;
 	}
+	public BlogVo findByBlog(String blogId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("blog.findbyblog",blogId);
+	}
 
 
 

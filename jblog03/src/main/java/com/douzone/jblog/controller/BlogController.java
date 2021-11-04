@@ -30,14 +30,16 @@ public class BlogController {
 	}
 	//블로그 관리 form
 	@RequestMapping("/admin")
-	public String blogAdminBasic(@AuthUser UserVo userVo) {
-
+	public String blogAdminBasic(@AuthUser UserVo userVo,
+			@PathVariable("blogId") String blogId,Model model) {
+		BlogVo blogVo = blogService.findByBlog(blogId);
+		model.addAttribute("blogVo", blogVo);
 		return "blog/blog-admin-basic";
 	}
 	//기본설정 Update
 	@RequestMapping(value = "/admin/update",method = RequestMethod.POST)
 	public String blogAdminBasicUpdate(
-			BlogVo blogVo,@RequestParam("file") MultipartFile file, Model model) {
+			BlogVo blogVo,@RequestParam("logo-file") MultipartFile file, Model model) {
 		System.out.println("기본설정 변경 주소 요청됨"); //성공
 		System.out.println("기본설정 변경 버튼 : "+blogVo);//성공
 		
