@@ -16,7 +16,7 @@
 	
 	<select id="findbycategory" parameterType="String" resultType="categoryrespdto">
 		<![CDATA[
-		select c.name, count.count as count, c.desc as `desc`, c.blog_id as blogId from category as c join (select count(*)as count from post group by category_no) as count on c.blog_id = #{blogId} group by c.name order by c.no desc ;		
+			select c.no, c.name,count.count as count, c.desc as `desc`, c.blog_id as blogId from category as c left outer join (select count(*)as count, category_no from post group by category_no) as count on c.no = count.category_no where c.blog_id= #{blogId} group by c.no order by c.no desc;		
 		]]>
 	</select>
 </mapper>

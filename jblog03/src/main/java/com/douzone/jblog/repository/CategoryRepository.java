@@ -32,6 +32,7 @@ public class CategoryRepository {
 	//카테고리 조회
 	public List<CategoryRespDto> findByCategory(String blogId) {
 		// TODO Auto-generated method stub
+		 
 		return sqlSession.selectList("category.findbycategory",blogId);
 	}
 

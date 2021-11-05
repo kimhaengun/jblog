@@ -34,7 +34,15 @@ public class CategoryService {
 	//카테고리 조회
 	public List<CategoryRespDto> findByCategory(String blogId) {
 		// TODO Auto-generated method stub
-		return categoryRepository.findByCategory(blogId);
+		List<CategoryRespDto> list = categoryRepository.findByCategory(blogId);
+		System.out.println(list);
+		
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getCount() == null) {
+				list.get(i).setCount(0L);
+			}
+		}
+		return list;
 	}
 
 }
