@@ -46,12 +46,5 @@ public class BlogController {
 		blogService.blogAdminBasicUpdate(blogVo,file);
 		return "redirect:/"+blogVo.getId()+"/admin";
 	}
-	
-
-	//글작성 form
-	@RequestMapping("/admin/write")
-	public String write(@AuthUser UserVo userVo) {
-		return "blog/blog-admin-write";
-	}
 
 }
