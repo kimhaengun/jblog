@@ -26,6 +26,7 @@ public class BlogController {
 		System.out.println("받아온 blogId : "+ blogId); //성공
 		
 		
+		
 		return "blog/blog-main";
 	}
 	//블로그 관리 form
