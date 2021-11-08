@@ -1,5 +1,7 @@
 package com.douzone.jblog.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.douzone.jblog.security.AuthUser;
 import com.douzone.jblog.service.BlogService;
+import com.douzone.jblog.service.CategoryService;
+import com.douzone.jblog.service.PostService;
 import com.douzone.jblog.vo.BlogVo;
+import com.douzone.jblog.vo.CategoryVo;
+import com.douzone.jblog.vo.PostVo;
 import com.douzone.jblog.vo.UserVo;
 
 @Controller
@@ -19,14 +25,29 @@ import com.douzone.jblog.vo.UserVo;
 public class BlogController {
 	@Autowired
 	private BlogService blogService;
+	@Autowired
+	private CategoryService categoryService;
+	@Autowired
+	private PostService postService;
 	
 	//메인 블로그 Form
 	@RequestMapping({""})
 	public String main(@PathVariable("blogId") String blogId,Model model) {
 		System.out.println("받아온 blogId : "+ blogId); //성공
 		
+		// *첫 메인화면*
+		BlogVo blogvo =  blogService.blogmain(blogId);
+		//카테고리
+		List<CategoryVo> categorylist = categoryService.blogmain(blogId);
+		//카테고리 중 가장 min(no)값 글 리스트 정보
+		List<PostVo> postlist = postService.blodmain(blogId);
+		//카테고리 중 가장 min(no)값 글 리스트 중 가장 최근 글(max) 정보		
+		PostVo maxpost = postService.blogmainpost(blogId);
 		
-		
+		model.addAttribute("blogvo",blogvo);
+		model.addAttribute("categorylist",categorylist);
+		model.addAttribute("postlist",postlist);
+		model.addAttribute("maxpost",maxpost);
 		return "blog/blog-main";
 	}
 	//블로그 관리 form

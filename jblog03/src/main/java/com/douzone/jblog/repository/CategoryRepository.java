@@ -36,4 +36,9 @@ public class CategoryRepository {
 		return sqlSession.selectList("category.findbycategory",blogId);
 	}
 
+	public List<CategoryVo> blogmain(String blogId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("category.blogmain",blogId);
+	}
+
 }

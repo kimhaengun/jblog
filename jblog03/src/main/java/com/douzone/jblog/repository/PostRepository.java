@@ -29,5 +29,17 @@ public class PostRepository {
 		int result = sqlSession.insert("post.postwrite",postVo);
 		return result == 1;
 	}
+	
+	//블로그 메인 정보
+	public List<PostVo> blogmain(String blogId) {
+		// TODO Auto-generated method stub
+		List<PostVo> postlist = sqlSession.selectList("post.blogmain",blogId);
+		return postlist;
+	}
+
+	public PostVo blogmainpost(String blogId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("post.blogmainpost",blogId);
+	}
 
 }

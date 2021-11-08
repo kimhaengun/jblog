@@ -6,6 +6,17 @@
 		<![CDATA[
 			insert into post values(null,#{title},#{contents},now(),#{categoryNo});
 		]]>
-		
 	</insert>
+	
+	<select id="blogmain" parameterType="String" resultType="postVo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo from post as p join (select min(no) as no from category where blog_id= #{blogId}) c on p.category_no = c.no order by p.no desc;
+		]]>
+	</select>
+	
+	<select id="blogmainpost" parameterType="String" resultType="postVo">
+		<![CDATA[
+			select p.no as no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo from post as p join (select min(no) as no from category where blog_id= #{blogId}) c on p.category_no = c.no order by p.no desc limit 1;
+		]]>
+	</select>
 </mapper>
