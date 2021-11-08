@@ -25,4 +25,10 @@
 			select no, name, `desc`, blog_id as blogId from category where blog_id = #{blogId};
 		]]>
 	</select>
+	
+	<select id="blogmain" parameterType="String" resultType="categoryVo">
+		<![CDATA[
+		select no,name,`desc`,blog_id as blogId from category where blog_id=#{blogId};
+		]]>
+	</select>
 </mapper>

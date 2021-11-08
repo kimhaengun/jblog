@@ -76,10 +76,16 @@ public class BlogService {
 
 		return filename;
 	}
-	//
+	//블로그관리
 	public BlogVo findByBlog(String blogId) {
 		// TODO Auto-generated method stub
 		return blogRepository.findByBlog(blogId);
+	}
+	
+	//블로 메인페이지 정보
+	public BlogVo blogmain(String blogId) {
+		// TODO Auto-generated method stub
+		return blogRepository.blogmain(blogId);
 	}
 
 

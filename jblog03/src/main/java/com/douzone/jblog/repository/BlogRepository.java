@@ -24,11 +24,16 @@ public class BlogRepository {
 		int result = sqlSession.update("blog.update",blogVo);
 		return result == 1;
 	}
+	//블로그 관리
 	public BlogVo findByBlog(String blogId) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("blog.findbyblog",blogId);
 	}
-
+	//블로그 메인 정보
+	public BlogVo blogmain(String blogId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("blog.blogmain",blogId);
+	}
 
 
 }

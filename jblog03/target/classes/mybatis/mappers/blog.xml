@@ -18,4 +18,11 @@
 			select id,title,logo from blog where id=#{blogid};
 		]]>
 	</select>
+	
+	<select id="blogmain" parameterType="String" resultType="blogvo">
+	<![CDATA[
+		select id, title, logo from blog where id = #{blogId};
+	]]>
+	</select>
+	
 </mapper>

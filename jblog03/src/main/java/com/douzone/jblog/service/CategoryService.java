@@ -44,5 +44,12 @@ public class CategoryService {
 		}
 		return list;
 	}
+	
+	//블로그 메인 정보
+	public List<CategoryVo> blogmain(String blogId) {
+		// TODO Auto-generated method stub
+		List<CategoryVo> list= categoryRepository.blogmain(blogId);
+		return list;
+	}
 
 }
