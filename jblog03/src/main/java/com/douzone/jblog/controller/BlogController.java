@@ -21,7 +21,7 @@ import com.douzone.jblog.vo.PostVo;
 import com.douzone.jblog.vo.UserVo;
 
 @Controller
-@RequestMapping("/{blogId}")
+@RequestMapping("/{blogId:(?!assests).*}")
 public class BlogController {
 	@Autowired
 	private BlogService blogService;

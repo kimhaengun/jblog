@@ -26,7 +26,7 @@
 				<ul class="blog-list">
 					<c:forEach items="${postlist }" var="postlist">
 						<li>
-							<a href="">${postlist.title }</a> 
+							<a href="${pageContext.request.contextPath}/${blogvo.id }/${postlist.categoryNo}/${postlist.no}">${postlist.title }</a> 
 							<span>${postlist.regDate }</span>	
 						</li>	
 					</c:forEach>
