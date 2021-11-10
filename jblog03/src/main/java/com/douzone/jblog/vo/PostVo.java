@@ -1,11 +1,14 @@
 package com.douzone.jblog.vo;
 
+import java.util.Optional;
+
 public class PostVo {
 	private Long no;
 	private String title;
 	private String contents;
 	private String regDate;
 	private Long categoryNo;
+	
 	
 	@Override
 	public String toString() {

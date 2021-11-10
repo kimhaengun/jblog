@@ -32,7 +32,7 @@
 		      			<td>${list.name }</td>
 		      			<td>${list.count }</td>
 		      			<td>${list.desc }</td>
-		      			<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td></td>
+		      			<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
 		      		</tr> 		      			
 		      		</c:forEach>
 				</table>
