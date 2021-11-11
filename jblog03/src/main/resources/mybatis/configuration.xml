@@ -10,6 +10,7 @@
 		<typeAlias type="com.douzone.jblog.vo.CategoryVo" alias="categoryvo"/>
 		<typeAlias type="com.douzone.jblog.vo.dto.CategoryRespDto" alias="categoryrespdto"/>
 		<typeAlias type="com.douzone.jblog.vo.PostVo" alias="postvo"/>
+		<typeAlias type="com.douzone.jblog.dto.BlogmainReqDto" alias="blogmainreqdto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />

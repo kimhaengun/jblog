@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.douzone.jblog.dto.BlogmainReqDto;
 import com.douzone.jblog.vo.CategoryVo;
 import com.douzone.jblog.vo.PostVo;
 
@@ -41,6 +42,23 @@ public class PostRepository {
 	public PostVo blogmainpost(String blogId) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("post.blogmainpost",blogId);
+	}
+
+	public List<PostVo> blogCategoryPostList(BlogmainReqDto dto) {
+		// TODO Auto-generated method stub
+		List<PostVo> postlist = sqlSession.selectList("post.blogcategorypostlist",dto);
+		
+		return postlist;
+	}
+	//현재 카테고리 no 받아와서 제일 no값 높은 포스트 가져오기
+	public PostVo blogCategoryMaxpost(BlogmainReqDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("post.blogcatrgorymaxpost",dto);
+	}
+	//포스트 상세보기
+	public PostVo findBlogPost(BlogmainReqDto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("post.findblogpost",dto);
 	}
 
 }

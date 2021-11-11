@@ -10,13 +10,31 @@
 	
 	<select id="blogmain" parameterType="String" resultType="postVo">
 		<![CDATA[
-			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo from post as p join (select min(no) as no from category where blog_id= #{blogId}) c on p.category_no = c.no order by p.no desc;
+			select p.no, p.title, p.contents, date_format(p.reg_date,'%Y/%m/%d') as regDate, p.category_no as categoryNo from post as p join (select min(no) as no from category where blog_id= #{blogId}) c on p.category_no = c.no order by p.no desc;
 		]]>
 	</select>
 	
 	<select id="blogmainpost" parameterType="String" resultType="postVo">
 		<![CDATA[
-			select p.no as no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo from post as p join (select min(no) as no from category where blog_id= #{blogId}) c on p.category_no = c.no order by p.no desc limit 1;
+			select p.no as no, p.title, p.contents, date_format(p.reg_date,'%Y/%m/%d') as regDate, p.category_no as categoryNo from post as p join (select min(no) as no from category where blog_id= #{blogId}) c on p.category_no = c.no order by p.no desc limit 1;
+		]]>
+	</select>
+	
+	<select id="blogcategorypostlist" parameterType="blogmainreqdto" resultType="postVo">
+		<![CDATA[
+		select post.no, post.title, post.contents, date_format(post.reg_date,'%Y/%m/%d') as regDate, post.category_no as categoryNo from post join (select no from category where blog_id=#{blogId} and no = #{categoryNo}) as c on post.category_no = c.no order by post.no desc;
+		]]>
+	</select>
+	
+	<select id="blogcatrgorymaxpost" parameterType="blogmainreqdto" resultType="postVo">
+		<![CDATA[
+		select post.no, post.title, post.contents, date_format(post.reg_date,'%Y/%m/%d') as regDate, post.category_no as categoryNo from post join (select no from category where blog_id=#{blogId} and no = #{categoryNo}) as c on post.category_no = c.no order by post.no desc limit 1;
+		]]>
+	</select>
+	
+	<select id="findblogpost" parameterType="blogmainreqdto" resultType="postVo">
+		<![CDATA[
+		select post.no, post.title, post.contents, date_format(post.reg_date,'%Y/%m/%d') as regDate, post.category_no as categoryNo from post join (select no from category where blog_id=#{blogId} and no = #{categoryNo}) as c on post.category_no = c.no and post.no=#{postNo};
 		]]>
 	</select>
 </mapper>

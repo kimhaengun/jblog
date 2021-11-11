@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.douzone.jblog.dto.BlogmainReqDto;
 import com.douzone.jblog.repository.PostRepository;
 import com.douzone.jblog.vo.BlogVo;
 import com.douzone.jblog.vo.CategoryVo;
@@ -36,6 +37,21 @@ public class PostService {
 	public PostVo blogmainpost(String blogId) {
 		// TODO Auto-generated method stub
 		return postRepository.blogmainpost(blogId);
+	}
+	public List<PostVo> blogCategoryPostList(BlogmainReqDto dto) {
+		// TODO Auto-generated method stub
+		return postRepository.blogCategoryPostList(dto);
+	}
+	
+	//현재 카테고리 no 받아와서 제일 no값 높은 포스트 가져오기
+	public PostVo blogmainpost(BlogmainReqDto dto) {
+		// TODO Auto-generated method stub
+		return postRepository.blogCategoryMaxpost(dto);
+	}
+	//포스트 상세보기
+	public PostVo findBlogPost(BlogmainReqDto dto) {
+		// TODO Auto-generated method stub
+		return postRepository.findBlogPost(dto);
 	}
 
 }
