@@ -17,7 +17,7 @@ import com.douzone.jblog.vo.BlogVo;
 @Service
 public class BlogService {
 	private static String SAVE_PATH = "/upload-jblog";
-	private static String URL_BASE = "/blog/images";
+	private static String URL_BASE = "/assets/images";
 	
 	@Autowired
 	private BlogRepository blogRepository;

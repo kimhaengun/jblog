@@ -34,6 +34,9 @@
 							<span>${postlist.regDate }</span>	
 						</li>	
 					</c:forEach>
+					<c:if test="${empty postlist }">
+						<h3>해당 게시물이 없습니다.</h3>
+					</c:if>
 				</ul>
 			</div>
 		</div>

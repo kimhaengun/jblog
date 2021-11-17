@@ -81,7 +81,7 @@
 	<context:annotation-config />
 
 	<!-- mvc url-resource mapping -->
-	<mvc:resources mapping="/blog/images/**"
+	<mvc:resources mapping="/assets/images/**"
 		location="file:/upload-jblog/" />
 
 	<!-- 멀티파트 리졸버 -->

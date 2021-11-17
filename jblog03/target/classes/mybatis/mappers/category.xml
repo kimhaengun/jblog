@@ -31,6 +31,10 @@
 		select no,name,`desc`,blog_id as blogId from category where blog_id=#{blogId};
 		]]>
 	</select>
-	
+	<delete id="delete" parameterType="String">
+		<![CDATA[
+			delete from category where no = #{no};
+		]]>
+	</delete>
 	
 </mapper>

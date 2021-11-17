@@ -42,4 +42,11 @@ public class CategoryRepository {
 		return sqlSession.selectList("category.blogmain",blogId);
 	}
 
+	public boolean categorydelete(String no) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("post.delete",no);
+		int result2 = sqlSession.delete("category.delete",no);
+		return result ==1 && result2 ==1 ;
+	}
+
 }

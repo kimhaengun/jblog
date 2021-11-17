@@ -15,7 +15,22 @@ import com.douzone.jblog.vo.UserVo;
 public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 	//Argument에 @AuthUser 어노테이션이 붙어있는가
 	//@AuthUser 타입이 UserVo 인가
-	
+
+	@Override
+	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+		// TODO Auto-generated method stub
+		if(!supportsParameter(parameter)) {
+			return WebArgumentResolver.UNRESOLVED;
+		}
+		
+		HttpServletRequest request = (HttpServletRequest)webRequest.getNativeRequest();
+		HttpSession session = request.getSession();
+		if(session == null) {
+			return null;
+		}
+		return session.getAttribute("authUser");
+	}
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
 		// TODO Auto-generated method stub
@@ -33,22 +48,6 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		
 		
 		return true;
-	}
-
-	@Override
-	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-		// TODO Auto-generated method stub
-		if(!supportsParameter(parameter)) {
-			return WebArgumentResolver.UNRESOLVED;
-		}
-		
-		HttpServletRequest request = (HttpServletRequest)webRequest.getNativeRequest();
-		HttpSession session = request.getSession();
-		if(session == null) {
-			return null;
-		}
-		return session.getAttribute("authUser");
 	}
 
 }

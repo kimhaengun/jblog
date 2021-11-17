@@ -53,4 +53,11 @@ public class CategoryService {
 		return list;
 	}
 
+	//삭제
+	public boolean categorydelete(String no) {
+		// TODO Auto-generated method stub
+		
+		return categoryRepository.categorydelete(no);
+	}
+
 }

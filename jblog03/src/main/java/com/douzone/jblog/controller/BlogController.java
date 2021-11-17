@@ -40,15 +40,16 @@ public class BlogController {
 			Model model) {
 		System.out.println("받아온 blogId : " + blogId); // 성공
 //		System.out.println("받아온 카테고리No : "+categoryNo); //성공 optionp[]
+		
 		// *첫 메인화면*
+		// 블로그 정보
 		BlogVo blogvo = blogService.blogmain(blogId);
 		model.addAttribute("blogVo", blogvo);
 		// 카테고리
 		List<CategoryVo> categorylist = categoryService.blogmain(blogId);
 		model.addAttribute("categorylist", categorylist);
-
 		
-		if(categoryNo.isPresent()) { //null이아니면
+		if(categoryNo.isPresent()) { //categoryno null이아니면
 			BlogmainReqDto dto = new BlogmainReqDto();
 			dto.setBlogId(blogId);
 			dto.setCategoryNo(categoryNo.get());

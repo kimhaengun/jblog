@@ -17,7 +17,7 @@ import com.douzone.jblog.vo.dto.CategoryRespDto;
 
 
 @Controller
-@RequestMapping("/{cblogId}")
+@RequestMapping("/{cblogId:(?!assets).*}")
 public class CategoryController {
 
 	@Autowired
@@ -40,5 +40,12 @@ public class CategoryController {
 		System.out.println("카테고리 추가내용 : "+categoryVo);
 		categoryService.categoryAdd(categoryVo);
 		return "redirect:/"+categoryVo.getBlogId()+"/admin/category";
+	}
+	//카테고리 삭제
+	@RequestMapping("/admin/category/{no}")
+	public String categorydelete(@PathVariable("cblogId")String blogId,
+			@PathVariable("no")String no) {
+		categoryService.categorydelete(no);
+		return "redirect:/"+blogId+"/admin/category";
 	}
 }

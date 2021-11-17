@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JBlog</title>
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+
 </head>
 <body>
 	<div id="container">
@@ -26,13 +27,15 @@
 		      			<th>설명</th>
 		      			<th>삭제</th>      			
 		      		</tr>
-		      		<c:forEach items="${list}" var="list">
+		      		
+		      		<c:set var="number" value="${fn:length(list) }"/>
+		      		<c:forEach items="${list}" var="list" varStatus="status">
 		      		<tr>
-		      			<td>1</td>
+		      			<td>${number - status.index }</td>
 		      			<td>${list.name }</td>
 		      			<td>${list.count }</td>
 		      			<td>${list.desc }</td>
-		      			<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
+		      			<td><div onclick="location.href='${pageContext.request.contextPath}/${list.blogId}/admin/category/${list.no}'"><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></div></td>
 		      		</tr> 		      			
 		      		</c:forEach>
 				</table>

@@ -37,4 +37,10 @@
 		select post.no, post.title, post.contents, date_format(post.reg_date,'%Y/%m/%d') as regDate, post.category_no as categoryNo from post join (select no from category where blog_id=#{blogId} and no = #{categoryNo}) as c on post.category_no = c.no and post.no=#{postNo};
 		]]>
 	</select>
+	
+	<delete id="delete" parameterType="String">
+		<![CDATA[
+		delete from post where category_no = #{no};
+		]]>
+	</delete>
 </mapper>
